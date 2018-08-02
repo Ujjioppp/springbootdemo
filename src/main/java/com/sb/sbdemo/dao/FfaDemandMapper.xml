@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sb.sbdemo.dao.FfaDemandMapper">
+    <resultMap id="BaseResultMap" type="com.sb.sbdemo.model.FfaDemand">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="uuid" property="uuid" jdbcType="VARCHAR"/>
+        <result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP"/>
+        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP"/>
+        <result column="user_created" property="userCreated" jdbcType="BIGINT"/>
+        <result column="user_modified" property="userModified" jdbcType="BIGINT"/>
+        <result column="alive_flag" property="aliveFlag" jdbcType="INTEGER"/>
+        <result column="version" property="version" jdbcType="BIGINT"/>
+        <result column="serial_number" property="serialNumber" jdbcType="VARCHAR"/>
+        <result column="ffa_demand_type_code" property="ffaDemandTypeCode" jdbcType="VARCHAR"/>
+        <result column="ffa_route_code" property="ffaRouteCode" jdbcType="VARCHAR"/>
+        <result column="ffa_period_type_code" property="ffaPeriodTypeCode" jdbcType="VARCHAR"/>
+        <result column="ffa_period" property="ffaPeriod" jdbcType="VARCHAR"/>
+        <result column="tonnage" property="tonnage" jdbcType="VARCHAR"/>
+        <result column="enterprise_id" property="enterpriseId" jdbcType="BIGINT"/>
+        <result column="ffa_order_type_code" property="ffaOrderTypeCode" jdbcType="VARCHAR"/>
+        <result column="ws" property="ws" jdbcType="DECIMAL"/>
+        <result column="price" property="price" jdbcType="DECIMAL"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, uuid, gmt_created, gmt_modified, user_created, user_modified, alive_flag, version, 
+    serial_number, ffa_demand_type_code, ffa_route_code, ffa_period_type_code, ffa_period, 
+    tonnage, enterprise_id, ffa_order_type_code, ws, price
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from t_ffa_demand
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_ffa_demand
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.sb.sbdemo.model.FfaDemand">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into t_ffa_demand (uuid, gmt_created, gmt_modified,
+        user_created, user_modified, alive_flag,
+        version, serial_number, ffa_demand_type_code,
+        ffa_route_code, ffa_period_type_code, ffa_period,
+        tonnage, enterprise_id, ffa_order_type_code,
+        ws, price)
+        values (#{uuid,jdbcType=VARCHAR}, #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP},
+        #{userCreated,jdbcType=BIGINT}, #{userModified,jdbcType=BIGINT}, #{aliveFlag,jdbcType=INTEGER},
+        #{version,jdbcType=BIGINT}, #{serialNumber,jdbcType=VARCHAR}, #{ffaDemandTypeCode,jdbcType=VARCHAR},
+        #{ffaRouteCode,jdbcType=VARCHAR}, #{ffaPeriodTypeCode,jdbcType=VARCHAR}, #{ffaPeriod,jdbcType=VARCHAR},
+        #{tonnage,jdbcType=VARCHAR}, #{enterpriseId,jdbcType=BIGINT}, #{ffaOrderTypeCode,jdbcType=VARCHAR},
+        #{ws,jdbcType=DECIMAL}, #{price,jdbcType=DECIMAL})
+    </insert>
+    <insert id="insertSelective" parameterType="com.sb.sbdemo.model.FfaDemand">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into t_ffa_demand
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="uuid != null">
+                uuid,
+            </if>
+            <if test="gmtCreated != null">
+                gmt_created,
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified,
+            </if>
+            <if test="userCreated != null">
+                user_created,
+            </if>
+            <if test="userModified != null">
+                user_modified,
+            </if>
+            <if test="aliveFlag != null">
+                alive_flag,
+            </if>
+            <if test="version != null">
+                version,
+            </if>
+            <if test="serialNumber != null">
+                serial_number,
+            </if>
+            <if test="ffaDemandTypeCode != null">
+                ffa_demand_type_code,
+            </if>
+            <if test="ffaRouteCode != null">
+                ffa_route_code,
+            </if>
+            <if test="ffaPeriodTypeCode != null">
+                ffa_period_type_code,
+            </if>
+            <if test="ffaPeriod != null">
+                ffa_period,
+            </if>
+            <if test="tonnage != null">
+                tonnage,
+            </if>
+            <if test="enterpriseId != null">
+                enterprise_id,
+            </if>
+            <if test="ffaOrderTypeCode != null">
+                ffa_order_type_code,
+            </if>
+            <if test="ws != null">
+                ws,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtCreated != null">
+                #{gmtCreated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtModified != null">
+                #{gmtModified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userCreated != null">
+                #{userCreated,jdbcType=BIGINT},
+            </if>
+            <if test="userModified != null">
+                #{userModified,jdbcType=BIGINT},
+            </if>
+            <if test="aliveFlag != null">
+                #{aliveFlag,jdbcType=INTEGER},
+            </if>
+            <if test="version != null">
+                #{version,jdbcType=BIGINT},
+            </if>
+            <if test="serialNumber != null">
+                #{serialNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="ffaDemandTypeCode != null">
+                #{ffaDemandTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="ffaRouteCode != null">
+                #{ffaRouteCode,jdbcType=VARCHAR},
+            </if>
+            <if test="ffaPeriodTypeCode != null">
+                #{ffaPeriodTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="ffaPeriod != null">
+                #{ffaPeriod,jdbcType=VARCHAR},
+            </if>
+            <if test="tonnage != null">
+                #{tonnage,jdbcType=VARCHAR},
+            </if>
+            <if test="enterpriseId != null">
+                #{enterpriseId,jdbcType=BIGINT},
+            </if>
+            <if test="ffaOrderTypeCode != null">
+                #{ffaOrderTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="ws != null">
+                #{ws,jdbcType=DECIMAL},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.sb.sbdemo.model.FfaDemand">
+        update t_ffa_demand
+        <set>
+            <if test="uuid != null">
+                uuid = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtCreated != null">
+                gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+            </if>
+            <if test="gmtModified != null">
+                gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userCreated != null">
+                user_created = #{userCreated,jdbcType=BIGINT},
+            </if>
+            <if test="userModified != null">
+                user_modified = #{userModified,jdbcType=BIGINT},
+            </if>
+            <if test="aliveFlag != null">
+                alive_flag = #{aliveFlag,jdbcType=INTEGER},
+            </if>
+            <if test="version != null">
+                version = #{version,jdbcType=BIGINT},
+            </if>
+            <if test="serialNumber != null">
+                serial_number = #{serialNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="ffaDemandTypeCode != null">
+                ffa_demand_type_code = #{ffaDemandTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="ffaRouteCode != null">
+                ffa_route_code = #{ffaRouteCode,jdbcType=VARCHAR},
+            </if>
+            <if test="ffaPeriodTypeCode != null">
+                ffa_period_type_code = #{ffaPeriodTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="ffaPeriod != null">
+                ffa_period = #{ffaPeriod,jdbcType=VARCHAR},
+            </if>
+            <if test="tonnage != null">
+                tonnage = #{tonnage,jdbcType=VARCHAR},
+            </if>
+            <if test="enterpriseId != null">
+                enterprise_id = #{enterpriseId,jdbcType=BIGINT},
+            </if>
+            <if test="ffaOrderTypeCode != null">
+                ffa_order_type_code = #{ffaOrderTypeCode,jdbcType=VARCHAR},
+            </if>
+            <if test="ws != null">
+                ws = #{ws,jdbcType=DECIMAL},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.sb.sbdemo.model.FfaDemand">
+    update t_ffa_demand
+    set uuid = #{uuid,jdbcType=VARCHAR},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      user_created = #{userCreated,jdbcType=BIGINT},
+      user_modified = #{userModified,jdbcType=BIGINT},
+      alive_flag = #{aliveFlag,jdbcType=INTEGER},
+      version = #{version,jdbcType=BIGINT},
+      serial_number = #{serialNumber,jdbcType=VARCHAR},
+      ffa_demand_type_code = #{ffaDemandTypeCode,jdbcType=VARCHAR},
+      ffa_route_code = #{ffaRouteCode,jdbcType=VARCHAR},
+      ffa_period_type_code = #{ffaPeriodTypeCode,jdbcType=VARCHAR},
+      ffa_period = #{ffaPeriod,jdbcType=VARCHAR},
+      tonnage = #{tonnage,jdbcType=VARCHAR},
+      enterprise_id = #{enterpriseId,jdbcType=BIGINT},
+      ffa_order_type_code = #{ffaOrderTypeCode,jdbcType=VARCHAR},
+      ws = #{ws,jdbcType=DECIMAL},
+      price = #{price,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <select id="queryList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        t_ffa_demand
+    </select>
+</mapper>

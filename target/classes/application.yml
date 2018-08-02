@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:mysql://rm-2ze1emscmwth2ldalo.mysql.rds.aliyuncs.com:3306/crude-trade-asset?characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull
+    driver-class-name: com.mysql.jdbc.Driver
+    username: b2b_ccav_test
+    password: ccav@1152
+    type: com.alibaba.druid.pool.DruidDataSource
+  thymeleaf:
+    cache: false
+    suffix: .html
+    prefix: classpath:/templates/views/
+server:
+  port: 8000
+pagehelper:
+  helper-dialect: mysql
+  reasonable: false
+  support-methods-arguments: true
+logging:
+  level:
+    com.sb.sbdemo.dao: debug
+#  params: count=countSql
