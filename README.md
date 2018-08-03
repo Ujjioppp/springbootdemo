@@ -31,3 +31,4 @@ springboot学习项目
 实现：
 * <code>RedisTemplate</code> 管理登录用户，<code>@LoginAccess</code>配合redis校验用户是否登录。
 * <code>HandlerMethodArgumentResolver</code> 自动注入Controller参数列表中User（登录用户）。
+* Thymeleaf 空值的处理使用“?”，例<code>th:text="${user?.userName}"</code>。
