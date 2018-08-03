@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 原油
+ Source Server         : local
  Source Server Type    : MySQL
- Source Server Version : 50634
- Source Host           : rm-2ze1emscmwth2ldalo.mysql.rds.aliyuncs.com:3306
- Source Schema         : crude-trade-asset
+ Source Server Version : 50722
+ Source Host           : localhost:3306
+ Source Schema         : sbdemo
 
  Target Server Type    : MySQL
- Target Server Version : 50634
+ Target Server Version : 50722
  File Encoding         : 65001
 
- Date: 02/08/2018 14:17:04
+ Date: 03/08/2018 09:50:23
 */
 
 SET NAMES utf8mb4;
@@ -177,5 +177,17 @@ INSERT INTO `t_ffa_demand` VALUES (136, 'c932ac21-1405-456a-bfd8-0131887b3078', 
 INSERT INTO `t_ffa_demand` VALUES (137, '1b8a211b-b1a2-438a-ac3c-932706933c71', '2018-08-02 11:31:45', NULL, 100009150, NULL, 1, 0, '20180802113144', '2', '1', '1', 'JANUARY-2019', '12', 99999999, '2', NULL, 12.00);
 INSERT INTO `t_ffa_demand` VALUES (138, '02dc1ebc-7eae-4dd5-ab59-b44b2479c4ae', '2018-08-02 11:38:54', NULL, 100009150, NULL, 1, 0, '20180802113853', '1', '1', '1', 'JANUARY-2019', '12', 99999999, '2', NULL, 21.00);
 COMMIT;
+
+-- ----------------------------
+-- Table structure for t_user
+-- ----------------------------
+DROP TABLE IF EXISTS `t_user`;
+CREATE TABLE `t_user` (
+  `id` bigint(12) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(15) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `salt` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 SET FOREIGN_KEY_CHECKS = 1;

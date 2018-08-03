@@ -3,10 +3,12 @@ package com.sb.sbdemo.controller;
 import com.sb.sbdemo.access.LoginAccess;
 import com.sb.sbdemo.exception.BusiException;
 import com.sb.sbdemo.model.FfaDemand;
+import com.sb.sbdemo.model.User;
 import com.sb.sbdemo.page.PageInfo;
 import com.sb.sbdemo.service.FfaDemandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +39,11 @@ public class IndexController {
     @LoginAccess
     public String loginAccess() {
         return "login_access";
+    }
+
+    @RequestMapping(value = "/login")
+    public String login(User user){
+        return "login_success";
     }
 
 

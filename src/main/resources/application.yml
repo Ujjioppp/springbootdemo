@@ -26,6 +26,20 @@ spring:
       max-pool-prepared-statement-per-connection-size: 20
       # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
       filters: stat,wall,slf4j
+  #redis
+  redis:
+    database: 1
+    host: localhost
+    port: 6379
+    password: 123456
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 3000
+        max-idle: 8
+        min-idle: 0
+    timeout: 6000
+
   thymeleaf:
     cache: false
     suffix: .html
