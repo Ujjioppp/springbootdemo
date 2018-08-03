@@ -26,11 +26,19 @@ public class WebAppConfig implements WebMvcConfigurer {
         return new CurrentUserArgumentResolver();
     }
 
+    /**
+     * 拦截器-管理@LoginAccess
+     * @param registry
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(accessHandlerInterceptor()).addPathPatterns("/*");
     }
 
+    /**
+     * 注入Controller User参数
+     * @param resolvers
+     */
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         resolvers.add(currentUserArgumentResolver());
