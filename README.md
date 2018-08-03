@@ -3,10 +3,11 @@ springboot学习项目
 
 2018年08月02日
 
-技术：springboot、mybatis、thymeleaf、mysql。
+技术：springboot、mybatis、thymeleaf、mysql、maven。
 
 实现：
 
+* mybatis generator
 * mybatis pagehelper分页
 * 自定义注解
   * <code>@LoginAccess</code>：用于Controller内方法，判断是否登录。
@@ -20,6 +21,7 @@ springboot学习项目
   * <code>th:each</code>
   * <code>th:replace</code>（替换，@see <code>th:include</code>）
 * druid
+
 
 
 2018年08月03日
