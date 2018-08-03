@@ -1,5 +1,7 @@
 package com.sb.sbdemo.controller;
 
+import com.sb.sbdemo.controller.form.UserForm;
+import com.sb.sbdemo.controller.form.manager.UserFormManager;
 import com.sb.sbdemo.exception.BusiException;
 import com.sb.sbdemo.model.User;
 import com.sb.sbdemo.service.UserService;
@@ -19,6 +21,9 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserFormManager userFormManager;
+
     @RequestMapping(value = "toLogin")
     public String login() {
         return "login";
@@ -26,8 +31,8 @@ public class LoginController {
 
 
     @RequestMapping(value = "/login")
-    public String login(User user, ModelMap modelMap, HttpSession session) throws BusiException {
-        User currUser = this.userService.login(session.getId(), user);
+    public String login(UserForm user, ModelMap modelMap, HttpSession session) throws BusiException {
+        User currUser = this.userService.login(session.getId(), this.userFormManager.convertToUser(user));
         modelMap.put("user", currUser);
         return "login_success";
     }

@@ -1,8 +1,10 @@
-package com.sb.sbdemo.interceptor;
+package com.sb.sbdemo.sys;
 
 import com.sb.sbdemo.access.LoginAccess;
+import com.sb.sbdemo.redis.RedisUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -24,12 +26,16 @@ public class AccessHandlerInterceptor implements HandlerInterceptor {
     @Value("${need.login}")
     private Boolean needLogin;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (handler instanceof HandlerMethod) {
             HandlerMethod handlerMethod = (HandlerMethod) handler;
             LoginAccess loginAccess = AnnotationUtils.getAnnotation(handlerMethod.getMethod(), LoginAccess.class);
-            if (loginAccess != null && needLogin) {
+            String sessionId = request.getRequestedSessionId();
+            if (loginAccess != null && needLogin && redisUtil.getObj(sessionId) == null) {
                 response.sendRedirect("/toLogin");
                 return false;
             }

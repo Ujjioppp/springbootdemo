@@ -16,7 +16,7 @@ public class RedisUtil {
         this.redisTemplate.opsForValue().set(key, value);
     }
 
-    public void getObj(String key) {
-        this.redisTemplate.opsForValue().get(key);
+    public Object getObj(String key) {
+        return this.redisTemplate.opsForValue().get(key);
     }
 }

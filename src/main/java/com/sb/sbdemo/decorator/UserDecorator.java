@@ -4,7 +4,7 @@ import com.sb.sbdemo.constant.KeyConst;
 import com.sb.sbdemo.exception.BusiException;
 import com.sb.sbdemo.model.User;
 import com.sb.sbdemo.redis.RedisUtil;
-import com.sb.sbdemo.redis.domain.manager.UserManager;
+import com.sb.sbdemo.redis.domain.manager.CurrUserManager;
 import com.sb.sbdemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,7 +23,7 @@ public class UserDecorator implements UserService {
     private UserService userService;
 
     @Autowired
-    private UserManager userManager;
+    private CurrUserManager userManager;
     @Autowired
     private RedisUtil redisUtil;
 

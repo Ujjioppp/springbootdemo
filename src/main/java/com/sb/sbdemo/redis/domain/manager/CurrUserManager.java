@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  * Created by ye on 3/8/18.
  */
 @Service
-public class UserManager {
+public class CurrUserManager {
     public CurrUserDomain convertToUserDomain(User user) {
         CurrUserDomain currUserDomain = null;
         if (user != null) {
@@ -16,5 +16,14 @@ public class UserManager {
             currUserDomain.setUserName(user.getUserName());
         }
         return currUserDomain;
+    }
+
+    public User converToUser(CurrUserDomain currUserDomain) {
+        User user = null;
+        if (currUserDomain != null) {
+            user = new User();
+            user.setUserName(currUserDomain.getUserName());
+        }
+        return user;
     }
 }

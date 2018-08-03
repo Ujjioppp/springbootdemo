@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link th:href="@{~/css/main.css}" rel="stylesheet" type="text/css" />
+<body>
+<b>inject</b> success! <br/>current user <span class="error" th:text="${user.userName}"></span>
+<div th:replace="contain/back"></div>
+</body>
+</html>

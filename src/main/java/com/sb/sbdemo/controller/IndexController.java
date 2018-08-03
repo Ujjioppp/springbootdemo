@@ -8,7 +8,6 @@ import com.sb.sbdemo.page.PageInfo;
 import com.sb.sbdemo.service.FfaDemandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +30,7 @@ public class IndexController {
     public String index(ModelMap modelMap, PageInfo pageInfo) {
         List<FfaDemand> ffaDemandList = this.ffaDemandService.queryList(pageInfo);
         modelMap.put("demandList", ffaDemandList);
-        modelMap.put("page",pageInfo);
+        modelMap.put("page", pageInfo);
         return "index";
     }
 
@@ -48,5 +47,12 @@ public class IndexController {
         if (probability > radix / 2)
             throw new BusiException("on purpose");
         return "200";
+    }
+
+    @RequestMapping(value = "inject_user")
+    @LoginAccess
+    public String injectUser(User user, ModelMap modelMap) {
+        modelMap.put("user", user);
+        return "inject_user";
     }
 }

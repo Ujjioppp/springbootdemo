@@ -1,10 +1,14 @@
 package com.sb.sbdemo.config;
 
-import com.sb.sbdemo.interceptor.AccessHandlerInterceptor;
+import com.sb.sbdemo.sys.AccessHandlerInterceptor;
+import com.sb.sbdemo.sys.CurrentUserArgumentResolver;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.List;
 
 /**
  * Created by ye on 1/8/18.
@@ -13,12 +17,22 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebAppConfig implements WebMvcConfigurer {
 
     @Bean
-    AccessHandlerInterceptor accessHandlerInterceptor(){
+    AccessHandlerInterceptor accessHandlerInterceptor() {
         return new AccessHandlerInterceptor();
+    }
+
+    @Bean
+    CurrentUserArgumentResolver currentUserArgumentResolver() {
+        return new CurrentUserArgumentResolver();
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(accessHandlerInterceptor()).addPathPatterns("/*");
+    }
+
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+        resolvers.add(currentUserArgumentResolver());
     }
 }
