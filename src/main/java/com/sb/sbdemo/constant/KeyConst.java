@@ -6,4 +6,9 @@ package com.sb.sbdemo.constant;
 public class KeyConst {
 
     public static final String USER_REDIS_KEY = "_user";
+
+
+    public static final class BeanName {
+        public static final String USER_SERVICE = "userServiceImpl";
+    }
 }

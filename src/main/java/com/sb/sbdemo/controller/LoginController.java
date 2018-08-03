@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by ye on 1/8/18.
  */
@@ -24,8 +26,8 @@ public class LoginController {
 
 
     @RequestMapping(value = "/login")
-    public String login(User user, ModelMap modelMap) throws BusiException {
-        User currUser = this.userService.login(user);
+    public String login(User user, ModelMap modelMap, HttpSession session) throws BusiException {
+        User currUser = this.userService.login(session.getId(), user);
         modelMap.put("user", currUser);
         return "login_success";
     }

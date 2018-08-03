@@ -8,5 +8,5 @@ import com.sb.sbdemo.model.User;
  */
 public interface UserService {
 
-    User login(User user) throws BusiException;
+    User login(String key ,User user) throws BusiException;
 }
