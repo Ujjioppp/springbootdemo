@@ -29,7 +29,7 @@ public class AccessHandlerInterceptor implements HandlerInterceptor {
             HandlerMethod handlerMethod = (HandlerMethod) handler;
             LoginAccess loginAccess = AnnotationUtils.getAnnotation(handlerMethod.getMethod(), LoginAccess.class);
             if (loginAccess != null && needLogin) {
-                response.sendRedirect("/login");
+                response.sendRedirect("/toLogin");
                 return false;
             }
         }

@@ -41,11 +41,6 @@ public class IndexController {
         return "login_access";
     }
 
-    @RequestMapping(value = "/login")
-    public String login(User user){
-        return "login_success";
-    }
-
 
     @RequestMapping(value = "/busi_excep")
     public String busiExcep() throws BusiException {
