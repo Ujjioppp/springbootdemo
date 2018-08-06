@@ -34,7 +34,7 @@ public class AccessHandlerInterceptor implements HandlerInterceptor {
         if (handler instanceof HandlerMethod) {
             HandlerMethod handlerMethod = (HandlerMethod) handler;
             LoginAccess loginAccess = AnnotationUtils.getAnnotation(handlerMethod.getMethod(), LoginAccess.class);
-            String sessionId = request.getRequestedSessionId();
+            String sessionId = request.getSession().getId();
             if (loginAccess != null && needLogin && redisUtil.getObj(sessionId) == null) {
                 response.sendRedirect("/toLogin");
                 return false;

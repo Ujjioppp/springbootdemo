@@ -32,3 +32,13 @@ springboot学习项目
 * <code>RedisTemplate</code> 管理登录用户，<code>@LoginAccess</code>配合redis校验用户是否登录。
 * <code>HandlerMethodArgumentResolver</code> 自动注入Controller参数列表中User（登录用户）。
 * Thymeleaf 空值的处理使用“?”，例<code>th:text="${user?.userName}"</code>。
+
+
+
+2018年08月06日
+
+技术：JSR303
+
+实现：
+* thymeleaf使用<code>th:object</code>、<code>th:field</code>、<code>th:errors</code>，Controller使用<code>@ModelAttribute</code>、<code>@Valid</code>
+    * 遇到问题：跳转到登录页时报出异常：<code>Neither BindingResult nor plain target object for bean name '' available as request attribut</code>，在跳转登录页面方法内加入参数<code>@ModelAttribute("userForm")</code>解决。
