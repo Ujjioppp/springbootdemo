@@ -39,11 +39,21 @@ spring:
         max-idle: 8
         min-idle: 0
     timeout: 6000
-
   thymeleaf:
     cache: false
     suffix: .html
     prefix: classpath:/templates/views/
+  #dubbo
+  dubbo:
+    application:
+      name: sbdubbo-provider
+    base-package: com.sb.sbdemo.remote.impl
+    protocol: dubbo
+    registry:
+      address: localhost
+      port: 2181
+    consumer:
+      check: false
 server:
   port: 8000
 pagehelper:
@@ -53,3 +63,4 @@ pagehelper:
 logging:
   level:
     com.sb.sbdemo.dao: debug
+    org.springframework: warn
