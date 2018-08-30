@@ -61,4 +61,5 @@ public class IndexController {
         modelMap.put("user", user);
         return "inject_user";
     }
+
 }

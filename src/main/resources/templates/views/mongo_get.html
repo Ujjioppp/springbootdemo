@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{~/css/main.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+mongo get success.
+<table border="1" cellpadding="0" cellspacing="0" width="100%">
+    <tbody>
+    <tr th:each="d : ${datas}">
+        <td th:text="${d.ip}"></td>
+        <td th:text="${d.uuid}"></td>
+        <td th:text="${d.createTime}"></td>
+    </tr>
+    </tbody>
+</table>
+<div th:replace="contain/back"></div>
+</body>
+</html>

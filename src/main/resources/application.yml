@@ -54,6 +54,9 @@ spring:
       port: 2181
     consumer:
       check: false
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/mongo_test
 server:
   port: 8000
 pagehelper:

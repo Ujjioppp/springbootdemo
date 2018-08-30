@@ -8,9 +8,14 @@
 <body>
 <h1>index</h1>
 <div class="margin-div">
-    <a th:href="@{/login_access}">LoginAccess</a>
-    <a th:href="@{/busi_excep}" th:title="有几率获得异常">BusiException</a>
-    <a th:href="@{/inject_user}" th:title="有几率获得异常">check inject user</a>
+    <a th:href="@{/login_access}">LoginAccess</a><br/>
+
+    <a th:href="@{/busi_excep}" th:title="有几率获得异常">BusiException</a><br/>
+
+    <a th:href="@{/inject_user}" th:title="查看是否注入成功user">check inject user</a><br/>
+
+    <a th:href="@{/mongo_set}" th:title="测试mongoSet">mongo set</a><br/>
+    <a th:href="@{/mongo_get}" th:title="测试mongoGet">mongo get</a><br/>
 </div>
 <div class="margin-div">
     <form th:action="@{/}">
